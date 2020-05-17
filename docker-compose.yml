@@ -1,0 +1,41 @@
+# Compose is a tool for defining / running multi-container docker apps. YAML file confitures apps services
+# docker-compose up starts and runs the entire app
+version: "3"
+services:
+# node app running on port 3001
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    # volumes:
+    #   - data-volume:/data/db
+    ports:
+      - "27017:27017"
+      # - "3001:3001"
+    # expose:
+    #   - '27017'
+    # command: mongod --bind_ip 127.0.0.1
+    # command: mongod --bind_ip 0.0.0.0
+    # command: ["--bind_ip_all"]
+
+  web:
+    # volumes:
+    #   - data-volume:/data/db
+    # container_name: reviews_component_web
+    image: node:latest
+    build: .
+    # RUN npm run seed
+    # command: sh -c 'npm install; npm run seed; npm start'
+    # command: sh -c "npm run seed; npm start"
+    ports:
+      - "3001:3001"
+      # - "80:3001"
+    links:
+      - mongo
+
+
+  #Below used to attempt to seed from another container. this linked to that file dir 
+  # db:
+  #   build: ./database
+# Persist data at below dedicated dir
+# volumes:
+#   data-volume: 

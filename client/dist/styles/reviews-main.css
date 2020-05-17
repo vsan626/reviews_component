@@ -42,7 +42,7 @@ body {
 }
 
 .main-review-search-input {
-  height: 32px !important;
+  /* height: 32px !important; */
   width: 20em !important;
   padding: 0.5em 10px 0.5em 10px !important;
   border: .3px solid rgb(233, 233, 233) !important;

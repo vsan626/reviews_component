@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 9000
+const port = 3001
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -18,11 +18,11 @@ app.use('/', router)
 
 app.listen(port, () => console.log(`Server running, catch it on port ${port}`))
 
-app.get('/main.js', (req, res) => {
-  if(err){
-    console.log(err)
-  }
-  res.status(200).sendFile('./client/dist')
-})
+// app.get('/main.js', (req, res) => {
+//   if(err){
+//     console.log(err)
+//   }
+//   res.status(200).sendFile('./client/dist')
+// })
 
 module.exports = app

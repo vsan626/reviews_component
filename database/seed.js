@@ -1,5 +1,6 @@
 var model = require('./index');
 var faker = require('faker')
+var mongoose = require('mongoose');
 
 //function to create 10 reviews within one product
 let createProductsWithReviews = (i) => {
@@ -232,14 +233,15 @@ let data = createProduct();
 
 //seed database function
 let seedData = () => {
-  data.forEach((item) => {
+  // data.forEach((item) => {
     model
-      .create(item)
+      .insertMany(data)
       .then((result) => {
         console.log('seeded', result);
+        mongoose.connection.close()
       })
       .catch((err) => console.log(err));
-  });
+  // });
 };
 
 seedData();

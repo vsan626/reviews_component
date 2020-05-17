@@ -163,7 +163,8 @@ export default class WriteReviewModal extends Component {
       likes: this.state.likes,
       dislikes: this.state.dislikes
     }
-    axios.post(`http://localhost:9000/reviewspost/${id}`, obj)
+    //ec2-18-191-56-236.us-east-2.compute.amazonaws.com:3001
+    axios.post(`/reviewspost/${id}`, obj)
     .then(() => {
       console.log('posted Review')
     })
