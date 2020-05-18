@@ -164,7 +164,12 @@ export default class WriteReviewModal extends Component {
       dislikes: this.state.dislikes
     }
     //ec2-18-191-56-236.us-east-2.compute.amazonaws.com:3001
-    axios.post(`/reviewspost/${id}`, obj)
+    axios.post(`http://ec2-18-191-56-236.us-east-2.compute.amazonaws.com:3001/reviewspost/${id}`, obj, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      }
+    })
     .then(() => {
       console.log('posted Review')
     })
